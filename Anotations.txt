@@ -1,0 +1,32 @@
+Anotations:
+
+// =============================== // ======================================= // ======
+
+Definition of the scheduler plugin interface.
+	/litmus-rt/include/litmus/rt_param.h
+
+	- Priority
+	- lt_interval
+	- rt_task
+	- rt_job
+		- long long	lateness;
+		/* By how much did the prior job miss its deadline by?
+		 * Value differs from tardiness in that lateness may
+		 * be negative (when job finishes before its deadline).
+		 */
+	- rt_param
+	- struct _rt_domain* domain; /* ready queue for this task */
+	- struct list_head list; /* Used by rt_domain to queue task in release list */
+
+	What?
+	/* Special handling for periodic tasks executing
+	 * clock_nanosleep(CLOCK_MONOTONIC, ...).
+
+// =============================== // ======================================= // ======
+
+Constant definitions related to scheduling policy.
+	/litmus-rt/include/litmus/litmus.h
+
+	- real-time comparison macros:
+		- earlier_deadline(a, b) using lt_before -> rt_param.h
+		- earlier_release(a, b)

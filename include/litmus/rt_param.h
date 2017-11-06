@@ -198,7 +198,7 @@ struct rt_param {
 	struct rt_job 		job_params;
 
 
-	/* Special handling for periodic tasks executing
+	/* Special handling for periodic tasks executing // check it
 	 * clock_nanosleep(CLOCK_MONOTONIC, ...).
 	 */
 	lt_t			nanosleep_wakeup;

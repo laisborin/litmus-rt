@@ -11,7 +11,7 @@
 #include <litmus/ftdev.h>
 #include <litmus/litmus.h>
 
-#include <litmus/sched_trace.h>
+#include <litmus/sched_trace.h> // litmus-rt/include/litmus
 #include <litmus/feather_trace.h>
 #include <litmus/ftdev.h>
 
