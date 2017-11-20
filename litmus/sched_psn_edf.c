@@ -292,8 +292,8 @@ static void psnedf_task_new(struct task_struct * t, int on_rq, int is_scheduled)
 	}
 	raw_spin_unlock_irqrestore(&pedf->slock, flags);
 }
-
-static void psnedf_task_wake_up(struct task_struct *task)
+// Add process to ready queue
+static void psnedf_task_wake_up(struct task_struct *task) 
 {
 	unsigned long		flags;
 	psnedf_domain_t* 	pedf = task_pedf(task);
@@ -331,6 +331,7 @@ static void psnedf_task_wake_up(struct task_struct *task)
 	TRACE_TASK(task, "wake up done\n");
 }
 
+// Remove process from ready queue
 static void psnedf_task_block(struct task_struct *t)
 {
 	/* only running tasks can block, thus t is in no queue */
@@ -660,7 +661,7 @@ static struct sched_plugin psn_edf_plugin __cacheline_aligned_in_smp = {
 	.task_wake_up		= psnedf_task_wake_up,
 	.task_block		= psnedf_task_block,
 	.admit_task		= psnedf_admit_task,
-	.activate_plugin	= psnedf_activate_plugin,
+	.activate_plugin	= psnedf_activate_plugin, // inserir inicialização do modelo de energia aqui
 	.deactivate_plugin	= psnedf_deactivate_plugin,
 	.get_domain_proc_info	= psnedf_get_domain_proc_info,
 #ifdef CONFIG_LITMUS_LOCKING

@@ -30,3 +30,21 @@ Constant definitions related to scheduling policy.
 	- real-time comparison macros:
 		- earlier_deadline(a, b) using lt_before -> rt_param.h
 		- earlier_release(a, b)
+
+// =============================== // ======================================= // ======
+	/../litmus/litmus-rt/
+// =============================== //
+
+  - litmus_proc.c -- Implementation of the /proc/litmus directory tree.
+
+  - litmus.c -- Implementation of the LITMUS syscalls, the LITMUS intialization code, and the procfs interface
+
+  - sched_plugin.c -- core infrastructure for the scheduler plugin system
+
+  - sched_task_trace.c -- record scheduling events to a byte stream
+ 
+
+Tentar entender como o controle de tempo é feito
+	tardiness, lateness -> dissertação
+
+

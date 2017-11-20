@@ -122,6 +122,9 @@ struct rt_task {
 	task_class_t	cls;
 	budget_policy_t  budget_policy;  /* ignored by pfair */
 	release_policy_t release_policy;
+
+	// Id of the associated RUN Server
+	int 		run_server_id;
 };
 
 /* don't export internal data structures to user space (liblitmus) */
@@ -164,6 +167,7 @@ struct rt_job {
 };
 
 struct pfair_param;
+struct run_server;
 
 /*	RT task parameters for scheduling extensions
  *	These parameters are inherited during clone and therefore must
@@ -255,6 +259,9 @@ struct rt_param {
 		void *plugin_state;
 		struct pfair_param *pfair;
 	};
+
+	/* RUN state. Allocated on demand. */
+	struct run_server*	server;
 
 	/* Fields saved before BE->RT transition.
 	 */
