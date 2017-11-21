@@ -73,6 +73,7 @@ typedef enum {
 	LRT_wait_for_job_release,
 	LRT_wait_for_ts_release,
 	LRT_release_ts,
+	LRT_run_add_node,
 	LRT_get_current_budget,
 } litmus_syscall_id_t;
 
@@ -93,6 +94,13 @@ union litmus_syscall_args {
 		uint32_t obj_id;
 		void __user *config;
 	} od_open;
+
+	struct {
+		int __user *id;
+		int __user*level;
+		lt_t __user *rate_a;
+		lt_t __user *rate_b;
+	} run_add_node;
 
 	struct {
 		lt_t __user *expended;

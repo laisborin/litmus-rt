@@ -43,6 +43,29 @@ Constant definitions related to scheduling policy.
 
   - sched_task_trace.c -- record scheduling events to a byte stream
  
+// =============================== // ======================================= // ======
+	Make a syscall to LITMUS-RT
+// =============================== //
+
+/*
+* LITMUS^RT syscall emulation: we expose LITMUS^RT-specific operations
+* via ioctl() to avoid merge conflicts with the syscall tables when
+* rebasing LITMUS^RT. Whi this is not the most elegant way to expose
+* syscall-like functionality, it helps with reducing the effort
+* required to maintain LITMUS^RT out of tree.
+*/
+
+	- Files that need to change, directory /../litmus/litmus-rt/:
+		- /include/litmus/ctrlpage.h
+		- /litmus/ctrldev.c
+		- /litmus/litmus.c 
+	- Files that need to change, directory /../litmus/liblitimus/:
+		- /include/litmus.h
+		- /include/litmus/ctrlpage.h
+		- /src/syscalls.c
+		- /src/litmus.c
+
+
 
 Tentar entender como o controle de tempo é feito
 	tardiness, lateness -> dissertação
